@@ -17,7 +17,7 @@ def encoding(text: str):
             number = 1
     text1 += list_last_symbol[n] + str(number)
     index = sort_list.index(text)
-    text1 = text1 + "~" + str(index)
+    text1 = text1 + "," + str(index)
     return text1
 
 
@@ -68,7 +68,10 @@ f.close()
 
 f = open("Encoding.txt", "r", encoding="utf-8")
 text = f.read()
-t = tuple(item for item in text.split('~'))
+rle = text[0:text.rfind(",")]
+index = text[text.rfind(",") + 1 :]
+list1 = [rle, index]
+t = tuple(list1)
 f.close()
 
 f1 = open("Decoding.txt", "w", encoding="utf-8")
