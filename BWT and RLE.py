@@ -17,8 +17,9 @@ def encoding(text: str):
             number = 1
     text1 += list_last_symbol[n] + str(number)
     index = sort_list.index(text)
+    k = len(list_last_symbol) * 8 * index / ((len(text1) // 2 * 8) + (len(text1) // 2 * index))
     text1 = text1 + "," + str(index)
-    return text1
+    return text1,k
 
 
 def decoding(text: tuple):
@@ -62,7 +63,8 @@ text = input.read()
 input.close()
 
 f = open("Encoding.txt", "w", encoding="utf-8")
-text = encoding(text)
+text,k = encoding(text)
+print(k)
 f.write(text)
 f.close()
 
